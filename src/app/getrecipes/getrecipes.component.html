@@ -1,0 +1,34 @@
+
+<div>
+  <label for="groupKey">Group By:</label>
+  <input
+    id="groupKey"
+    type="text"
+    [(ngModel)]="groupKey"
+    placeholder="Enter property (e.g. cuisine)"
+    (input)="onGroupChange()"
+  />
+</div>
+ 
+<hr />
+ 
+<div *ngIf="groupedRecipes | keyvalue as grouped">
+  <div *ngFor="let group of grouped">
+    <h3>{{ group.key }}</h3>
+    <ul>
+      <li *ngFor="let recipe of group.value">
+{{ recipe.name }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<p>!. Recipes List!</p>
+<div *ngFor="let data of recipes ">
+    <h3>{{ data.name }}</h3>
+    <ul>
+        <li *ngFor="let recipe of data.ingredients">
+            <h4>{{ recipe }}</h4> 
+        </li>
+    </ul>
+</div>
